@@ -18,7 +18,7 @@ spec:
           - /README.md
       - path: .local/share/code-server/extensions
         image:
-          url: ghcr.io/vmware-tanzu-learning/vscode-java-extensions-$(platform_arch)-files:2.1.0
+          url: ghcr.io/vmware-tanzu-learning/vscode-java-extensions-arm64-files:2.1.0
   session:
     namespaces:
       budget: medium
@@ -30,13 +30,27 @@ spec:
         layout: split
       editor:
         enabled: true
+      docker:
+        enabled: true
+        compose:
+          services:
+            initializr-workshop:
+              image: ghcr.io/vmware-tanzu-labs/educates-spring-initializr:2.0
+              ports:
+                # - "127.0.0.1:8080:8080"
+                - target: 8080
+                  published: 8080
+                  protocol: tcp
+                  mode: host
     dashboards:
       - name: Spring Initializr
-        url: "$(ingress_protocol)://initializr-$(session_namespace).$(ingress_domain)"
+        url: "$(ingress_protocol)://initializr-$(session_hostname)$(ingress_port_suffix)"
     ingresses:
       - name: initializr
         protocol: http
-        host: initializr.$(workshop_namespace).svc.cluster.local
+        # host: initializr.$(workshop_namespace).svc.cluster.local
+        host: initializr-workshop
+        changeOrigin: true
         port: 8080
   environment:
     objects:
