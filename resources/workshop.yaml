@@ -18,7 +18,7 @@ spec:
           - /README.md
       - path: .local/share/code-server/extensions
         image:
-          # REQUIRES Educates 2.6.10. url: ghcr.io/vmware-tanzu-learning/vscode-java-extensions-$(platform_arch)-files:2.1.0
+          # REQUIRES Educates 2.6.11. url: ghcr.io/vmware-tanzu-learning/vscode-java-extensions-$(platform_arch)-files:2.1.0
           url: ghcr.io/vmware-tanzu-learning/vscode-java-extensions-arm64-files:2.1.0
   session:
     namespaces:
