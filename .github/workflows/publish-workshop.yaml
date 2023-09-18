@@ -13,11 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Calculate release variables
-        shell: bash
-        run: |
-          echo "REPOSITORY_TAG=${GITHUB_REF_NAME}" >>${GITHUB_ENV}
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -25,3 +20,5 @@ jobs:
         uses: vmware-tanzu-labs/educates-github-actions/publish-workshop@v6
         with:
           token: ${{secrets.GITHUB_TOKEN}}
+        env:
+          REPOSITORY_TAG: ${{GITHUB_REF_NAME}}
