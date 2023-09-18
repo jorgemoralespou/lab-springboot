@@ -21,4 +21,4 @@ jobs:
         with:
           token: ${{secrets.GITHUB_TOKEN}}
         env:
-          REPOSITORY_TAG: ${{GITHUB_REF_NAME}}
+          REPOSITORY_TAG: ${{github.ref_name}}
