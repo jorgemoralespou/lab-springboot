@@ -36,7 +36,7 @@ spec:
         compose:
           services:
             initializr:
-              image: ghcr.io/vmware-tanzu-labs/educates-spring-initializr:2.1
+              image: ghcr.io/vmware-tanzu-labs/educates-spring-initializr:2.2.0
               ports:
                 - target: 8080
                   published: 8080
